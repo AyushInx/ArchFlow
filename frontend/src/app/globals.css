@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ============================================
+   ArchFlow Design System — Blueprint Theme
+   ============================================ */
+
+/* Color tokens */
+:root {
+  --ink: #0F1B2D;
+  --slate: #1B2A41;
+  --grid-line: #2D4A66;
+  --paper: #F6F4EF;
+  --charcoal: #2B2F38;
+  --amber-signal: #E8A23D;
+  --teal-circuit: #45B8A4;
+  --coral-alert: #E2614B;
+
+  /* Mapped to Tailwind defaults */
+  --background: var(--paper);
+  --foreground: var(--charcoal);
+}
+
+/* Tailwind v4 theme extensions */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-grid-line: var(--grid-line);
+  --color-paper: var(--paper);
+  --color-charcoal: var(--charcoal);
+  --color-amber-signal: var(--amber-signal);
+  --color-teal-circuit: var(--teal-circuit);
+  --color-coral-alert: var(--coral-alert);
+
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* ============================================
+   Base styles
+   ============================================ */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Blueprint card hover effect
+   ============================================ */
+.blueprint-card--hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.blueprint-card--hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--amber-signal) !important;
+}
+
+/* ============================================
+   Blueprint background (no dot overlay on self)
+   ============================================ */
+.blueprint-bg {
+  background-color: var(--ink);
+}
+
+/* ============================================
+   Scrollbar styling
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--grid-line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amber-signal);
+}
+
+/* ============================================
+   Focus ring styling
+   ============================================ */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--amber-signal) !important;
+  box-shadow: 0 0 0 3px rgba(232, 162, 61, 0.2);
+}
+
+/* ============================================
+   Selection color
+   ============================================ */
+::selection {
+  background: rgba(232, 162, 61, 0.3);
+  color: var(--charcoal);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "archflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Collaborative system-design tool with blueprint aesthetics",
+  "scripts": {
+    "dev": "concurrently -n frontend,backend -c cyan,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
