@@ -15,7 +15,10 @@ setupSocketIO(httpServer);
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Allow any origin in dev or if there is no origin (e.g. mobile apps, curl requests)
+    callback(null, true);
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));

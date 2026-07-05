@@ -3,7 +3,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'danger' | 'ghost' | 'teal';
+  variant?: 'primary' | 'danger' | 'ghost' | 'teal' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   children: React.ReactNode;
@@ -19,23 +19,25 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--accent-purple)]/30 focus:ring-offset-0 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.97] hover:scale-[1.02]';
 
   const variantClasses: Record<string, string> = {
     primary:
-      'bg-[var(--amber-signal)] text-[var(--ink)] hover:brightness-110 focus:ring-[var(--amber-signal)] shadow-md hover:shadow-lg active:scale-[0.98]',
+      'bg-white text-[var(--cosmic-primary)] hover:bg-[var(--text-primary)] shadow-sm hover:shadow-md border border-transparent',
     danger:
-      'bg-[var(--coral-alert)] text-white hover:brightness-110 focus:ring-[var(--coral-alert)] shadow-md hover:shadow-lg active:scale-[0.98]',
+      'bg-red-500/10 text-red-400 hover:bg-red-500/20 border border-red-500/20',
     ghost:
-      'bg-transparent text-[var(--grid-line)] border border-[var(--grid-line)] hover:bg-[var(--grid-line)]/10 hover:text-white focus:ring-[var(--grid-line)]',
+      'bg-transparent text-[var(--text-muted)] border border-transparent hover:bg-white/5 hover:text-[var(--text-primary)]',
     teal:
-      'bg-[var(--teal-circuit)] text-[var(--ink)] hover:brightness-110 focus:ring-[var(--teal-circuit)] shadow-md hover:shadow-lg active:scale-[0.98]',
+      'bg-[var(--accent-teal)] text-[var(--cosmic-primary)] hover:brightness-110 shadow-md shadow-teal-500/20',
+    outline:
+      'bg-transparent text-[var(--text-primary)] border border-[var(--cosmic-border)] hover:bg-white/5 hover:border-white/15',
   };
 
   const sizeClasses: Record<string, string> = {
-    sm: 'px-3 py-1.5 text-sm gap-1.5',
+    sm: 'px-3 py-1.5 text-xs gap-1.5',
     md: 'px-5 py-2.5 text-sm gap-2',
-    lg: 'px-7 py-3.5 text-base gap-2.5',
+    lg: 'px-7 py-3 text-sm gap-2.5',
   };
 
   return (

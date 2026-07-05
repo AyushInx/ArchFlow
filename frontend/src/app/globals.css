@@ -1,41 +1,74 @@
 @import "tailwindcss";
 
 /* ============================================
-   ArchFlow Design System — Blueprint Theme
+   ArchFlow — Neo Cosmic Engineering Workspace
    ============================================ */
 
 /* Color tokens */
 :root {
-  --ink: #0F1B2D;
-  --slate: #1B2A41;
-  --grid-line: #2D4A66;
-  --paper: #F6F4EF;
-  --charcoal: #2B2F38;
-  --amber-signal: #E8A23D;
-  --teal-circuit: #45B8A4;
-  --coral-alert: #E2614B;
+  /* Cosmic Backgrounds */
+  --cosmic-primary: #130A1F;
+  --cosmic-canvas: #170E27;
+  --cosmic-secondary: #1D1430;
+  --cosmic-card: rgba(34, 25, 50, 0.75);
+  --cosmic-border: rgba(255, 255, 255, 0.08);
 
-  /* Mapped to Tailwind defaults */
-  --background: var(--paper);
-  --foreground: var(--charcoal);
+  /* Text */
+  --text-primary: #F8F5FF;
+  --text-secondary: #B5ACC8;
+  --text-muted: #7F7697;
+
+  /* Accent Colors */
+  --accent-purple: #A855F7;
+  --accent-pink: #EC4899;
+  --accent-teal: #2DD4BF;
+  --accent-emerald: #34D399;
+  --accent-amber: #FBBF24;
+  --accent-rose: #FB7185;
+  --accent-sky: #38BDF8;
+  --accent-cyan: #22D3EE;
+
+  /* Node-specific accent aliases */
+  --accent-client: var(--accent-emerald);
+  --accent-database: var(--accent-purple);
+  --accent-gateway: var(--accent-amber);
+  --accent-queue: var(--accent-pink);
+  --accent-micro: var(--accent-teal);
+  --accent-cache: var(--accent-amber);
+  --accent-storage: var(--accent-rose);
+  --accent-cdn: var(--accent-sky);
+
+  /* Legacy aliases for backward compat */
+  --primary: var(--cosmic-primary);
+  --secondary: var(--cosmic-secondary);
+  --canvas-bg: var(--cosmic-canvas);
+  --panel: var(--cosmic-card);
+  --border-light: var(--cosmic-border);
+  --background: var(--cosmic-primary);
+  --foreground: var(--text-primary);
 }
 
 /* Tailwind v4 theme extensions */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-ink: var(--ink);
-  --color-slate: var(--slate);
-  --color-grid-line: var(--grid-line);
-  --color-paper: var(--paper);
-  --color-charcoal: var(--charcoal);
-  --color-amber-signal: var(--amber-signal);
-  --color-teal-circuit: var(--teal-circuit);
-  --color-coral-alert: var(--coral-alert);
+  --color-primary: var(--cosmic-primary);
+  --color-secondary: var(--cosmic-secondary);
+  --color-panel: var(--cosmic-card);
+  --color-border-light: var(--cosmic-border);
 
-  --font-heading: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-sky: var(--accent-sky);
+  --color-accent-cyan: var(--accent-cyan);
 }
 
 /* ============================================
@@ -43,48 +76,84 @@
    ============================================ */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), system-ui, sans-serif;
+  background: var(--cosmic-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* ============================================
-   Blueprint card hover effect
+   Cosmic Canvas Background
    ============================================ */
-.blueprint-card--hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+.canvas-cosmic {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168, 85, 247, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(236, 72, 153, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(45, 212, 191, 0.03) 0%, transparent 50%),
+    var(--cosmic-canvas);
 }
-.blueprint-card--hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-color: var(--amber-signal) !important;
+
+/* Tiny star pattern overlay */
+.canvas-cosmic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.12) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(0.5px 0.5px at 15% 85%, rgba(255,255,255,0.06) 0%, transparent 100%),
+    radial-gradient(0.5px 0.5px at 45% 35%, rgba(255,255,255,0.07) 0%, transparent 100%),
+    radial-gradient(0.5px 0.5px at 75% 55%, rgba(255,255,255,0.05) 0%, transparent 100%),
+    radial-gradient(0.5px 0.5px at 85% 15%, rgba(255,255,255,0.06) 0%, transparent 100%),
+    radial-gradient(0.5px 0.5px at 25% 45%, rgba(255,255,255,0.08) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ============================================
-   Blueprint background (no dot overlay on self)
+   Cosmic Panel (Glassmorphism)
    ============================================ */
-.blueprint-bg {
-  background-color: var(--ink);
+.cosmic-panel {
+  background: var(--cosmic-card);
+  border: 1px solid var(--cosmic-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Legacy alias */
+.glass-panel {
+  background: var(--cosmic-card);
+  border: 1px solid var(--cosmic-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 /* ============================================
    Scrollbar styling
    ============================================ */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--ink);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--grid-line);
+  background: rgba(168, 85, 247, 0.15);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--amber-signal);
+  background: rgba(168, 85, 247, 0.3);
 }
 
 /* ============================================
@@ -92,45 +161,132 @@ body {
    ============================================ */
 input:focus,
 textarea:focus,
-select:focus {
-  border-color: var(--amber-signal) !important;
-  box-shadow: 0 0 0 3px rgba(232, 162, 61, 0.2);
+button:focus-visible {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.4) !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.15);
 }
 
 /* ============================================
    Selection color
    ============================================ */
 ::selection {
-  background: rgba(232, 162, 61, 0.3);
-  color: var(--charcoal);
+  background: rgba(168, 85, 247, 0.25);
+  color: var(--text-primary);
 }
 
 /* ============================================
-   Animations
+   Animations & Transitions
    ============================================ */
+.transition-hover {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-select {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-panel {
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes springScale {
+  0% { transform: scale(0.92); opacity: 0; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(16px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { transform: translateX(16px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+@keyframes slideInUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 0 12px rgba(168, 85, 247, 0.15); }
+  50% { border-color: rgba(168, 85, 247, 0.7); box-shadow: 0 0 20px rgba(168, 85, 247, 0.25); }
+}
+
+@keyframes packetMove {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+.animate-node-create {
+  animation: springScale 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 200ms ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight 250ms ease-out forwards;
 }
 
-.animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+.animate-slide-in-up {
+  animation: slideInUp 200ms ease-out forwards;
+}
+
+.animate-cosmic-pulse {
+  animation: cosmicPulse 2s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   React Flow Overrides
+   ============================================ */
+.react-flow__handle {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.react-flow__node:hover .react-flow__handle,
+.react-flow__node.selected .react-flow__handle {
+  opacity: 1;
+}
+
+.react-flow__edge-path {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1.2;
+  transition: stroke 200ms, stroke-width 200ms;
+}
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--accent-purple);
+  stroke-width: 2;
+}
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+/* MiniMap cosmic styling */
+.react-flow__minimap {
+  background: var(--cosmic-card) !important;
+  border: 1px solid var(--cosmic-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* Controls cosmic styling */
+.react-flow__controls {
+  display: none; /* We use custom controls */
 }
