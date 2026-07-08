@@ -26,7 +26,7 @@ ArchFlow is a real-time collaborative system architecture design tool with a "bl
 - **Drag & Drop Sidebar**: Easy to use component library.
 - **Real-Time Collaboration**: Live cursors, node movements, additions, and deletions using `Socket.io`.
 - **Comments & Export**: Drop comments on specific nodes and export to PNG/PDF/JSON.
-- **AI Generation**: Tell Claude about an architecture and instantly spawn a complete diagram on the canvas.
+- ~~**AI Generation**: Tell Claude about an architecture and instantly spawn a complete diagram on the canvas.~~(Well working on this part)
 
 ## Getting Started Locally
 
