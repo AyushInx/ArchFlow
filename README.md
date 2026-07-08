@@ -2,6 +2,23 @@
 
 ArchFlow is a real-time collaborative system architecture design tool with a "blueprint" theme, built on the MERN stack with Socket.io, React Flow, Next.js, and Anthropic Claude.
 
+## Screenshots
+
+### Login Page
+> **Note**: Add your screenshot at `screenshots/login.png`
+
+![Login Page](./screenshots/login.png)
+
+### Home / Projects Dashboard
+> **Note**: Add your screenshot at `screenshots/home.png`
+
+![Home Dashboard](./screenshots/home.png)
+
+### Interactive Architecture Canvas
+> **Note**: Add your screenshot at `screenshots/canvas.png`
+
+![Architecture Canvas](./screenshots/canvas.png)
+
 ## Features Built
 - **Authentication**: JWT-based auth via Next.js Context & Express.
 - **Project Dashboard**: View, search, and manage diagram projects.
